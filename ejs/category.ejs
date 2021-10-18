@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs'); %>
+    <link href="/css/view.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <%- include('./partials/nav-bar'); %>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4"><%= data[0].category %></h1>
+          <p class="lead">Просто выберите понравившиеся товар и мы доставим вам до двери</p>
+        </div>
+      </div>
+    
+            <div class="all">
+                <div class="card-deck">
+                    <% for(let i=0; i < data.length; i++) { %>
+                        <form action="/order" method="POST" class="card">
+                            <input hidden name="id" value=<%= data[i].id %>>
+                            <input hidden name="title" value=<%= data[i].title %>>
+                            <input hidden name="image" value=<%= data[i].image %>>
+                            <input hidden name="description" value=<%= data[i].description %>>
+                            <img src="<%= data[i].image %>"  class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= data[i].title %></h5>
+                                <p class="card-text"><%= data[i].description.split('.')[0] %></p>
+                                <button type="submit" class="btn btn-dark">Заказать</button>
+                            </div>
+                        </form>
+                    <% } %> 
+                </div>
+            </div>
+
+</body>
+</html>

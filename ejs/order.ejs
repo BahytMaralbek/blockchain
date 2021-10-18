@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs'); %>
+    <link href="/css/order.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <%- include('./partials/nav-bar'); %>
+ 
+    <div class="jumbotron jumbotron-fluid mb-5">
+        <div class="container">
+          <h1 class="display-4"><%= data.title %></h1>
+          <p class="lead"><%= data.description %></p>
+        </div>
+      </div>
+    
+    <form action="status" method="POST" name="status" class="container"> 
+        <div class="order mt-3">
+            <div class="info">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <input hidden name="title" value=<%= data.title %>>
+                        <input hidden name="id" value=<%= data.id%>>
+                        <input hidden name="image" value=<%= data.image%>>
+                        <img class="image" src="<%= data.image %>" alt="">
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                  <div class="form-group">
+                    <span for="formControlRange">Количество коробок</span>
+                    <input type="text" name="box" class="form-control" value="0" min="0" max="100" step="1" onkeyup="if(this.value>100){this.value='100';}else if(this.value<0){this.value='0';}" id="box" oninput="formControlRange.value=box.value">
+                    <input type="range" class="form-control-range" value="0" id="formControlRange" min="0" max="100" oninput="box.value=formControlRange.value">
+                    <!-- <input id="rangeinput" class="bar" type="range" min="100" max="10000" step="100" value="100" oninput="amount.value=rangeinput.value"> -->
+                    <span>0</span>
+                    <span style="float: right">100</span>
+                  </div>
+                  <span for="customRange2">Вес (кг)</span>
+                  <input type="text" name="weight" class="form-control" value="0" min="0" max="100" step="1" onkeyup="if(this.value>100){this.value='100';}else if(this.value<0){this.value='0';}" id="weight" oninput="customRange2.value=weight.value">
+                  <input type="range" class="custom-range" value="0" min="0" max="100" id="customRange2" oninput="weight.value=customRange2.value">
+                  <span>0</span>
+                  <span style="float: right;">100</span>
+                  
+                    <div class="ui form mt-3 mb-2">
+                    <div class="two fields">
+                        <div class="field">
+                        <label>Дата отправки</label>
+                        <div class="ui calendar" id="rangestart">
+                            <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="start" placeholder="Start">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="field">
+                        <label>Дата доставки</label>
+                        <div class="ui calendar" id="rangeend">
+                            <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="end" placeholder="End">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col">
+                          <input type="text" class="form-control" name="user" placeholder="Имя">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" name="phone" value="<%= data.phone %>" placeholder="+7">
+                        </div>
+                    </div>
+
+                  <button type="SUBMIT" class="btn btn-primary btn-lg btn-block mt-3">Заказать</button>
+            </div>
+        </div>
+      </form>
+      <script>
+            $('#rangestart').calendar({
+            type: 'date',
+            endCalendar: $('#rangeend')
+            });
+            $('#rangeend').calendar({
+            type: 'date',
+            startCalendar: $('#rangestart')
+            });
+      </script>
+</body>
+</html>

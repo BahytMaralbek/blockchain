@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs'); %>
+    <link href="/css/order.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <%- include('./partials/nav-bar'); %>
+ 
+    <div class="jumbotron jumbotron-fluid mb-5">
+        <div class="container">
+          <h1 class="display-4">Успешно!</h1>
+          <p class="lead"><%= data.user%>, мы успешно зарегистрировали ваш заказ под номером: <%= data.timestamp %></p>
+          <a type="button" class="btn btn-dark" href="/orders" >Заказы</a>
+        </div>
+      </div>
+    
+</body>
+</html>

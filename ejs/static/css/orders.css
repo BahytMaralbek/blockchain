@@ -1,0 +1,53 @@
+.image{
+	max-height: 400px;
+	max-width: fit-content;
+}
+
+.all{
+    margin: 70px 180px;
+}
+
+.modal-content{
+	width: 140%;
+	margin-left: -40px;
+}
+
+.date {
+    font-size: 11px
+}
+
+.divider {
+    height: 0px !important;
+    background-color: blue
+}
+
+.track-line {
+    height: 2px !important;
+    background-color: green
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 0px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.big-dot {
+    height: 25px;
+    width: 25px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.big-dot i {
+    font-size: 12px
+}
